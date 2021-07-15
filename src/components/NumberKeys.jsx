@@ -1,9 +1,10 @@
 import React from 'react'
 
-const NumberKeys = () => {
+const NumberKeys = ({id, number}) => {
+
   return (
-    <div>
-      <h1>Numeros</h1>
+    <div id={id}>
+      <span>{number}</span>
     </div>
   )
 }

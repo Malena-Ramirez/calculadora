@@ -5,7 +5,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     background: linear-gradient(300deg, rgba(2,128,144,1) 0%, rgba(0,168,150,1) 50%, rgba(153,217,140,1) 100%);
     font-family: 'Comfortaa', cursive;
-    /* font-family: 'ZCOOL QingKe HuangYou', cursive; */
   }
 `;
 
