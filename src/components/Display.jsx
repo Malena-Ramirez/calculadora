@@ -4,7 +4,7 @@ import { DisplayContainer, DisplayText } from './styled-components/CalculatorSty
 const Display = () => {
   return (
     <DisplayContainer>
-      <DisplayText id='display'>Pantalla</DisplayText>
+      <DisplayText id='display'>23678+8-5</DisplayText>
     </DisplayContainer>
   )
 }

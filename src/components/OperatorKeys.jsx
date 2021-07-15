@@ -1,10 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { OperatorKeyContainer } from './styled-components/CalculatorStyled';
 
-const OperatorKeys = () => {
+const OperatorKeys = ({id, symbol, special, bg}) => {
   return (
-    <div>
-      <h1>Operadores aritméticos</h1>
-    </div>
+    <OperatorKeyContainer id={id} special={special} bg={bg}>
+      <span>{symbol}</span>
+    </OperatorKeyContainer>
   )
 }
 

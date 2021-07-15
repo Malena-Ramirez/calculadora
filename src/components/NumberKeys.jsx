@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { NumberKeyContainer, Number } from './styled-components/CalculatorStyled';
 
 const NumberKeys = ({id, number}) => {
 
   return (
-    <div id={id}>
-      <span>{number}</span>
-    </div>
+    <NumberKeyContainer id={id}>
+      <Number>{number}</Number>
+    </NumberKeyContainer>
   )
 }
 
