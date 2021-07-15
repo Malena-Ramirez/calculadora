@@ -52,26 +52,32 @@ export const numbers = [
 export const operators = [
   {
     id: "clear",
-    symbol: "AC"
+    symbol: "AC",
+    special: true
   },
   {
     id: "add",
-    symbol: "+"
+    symbol: "+",
+    special: false
   },
   {
     id: "subtract",
-    symbol: "-"
+    symbol: "-",
+    special: false
   },
   {
     id: "multiply",
-    symbol: "x"
+    symbol: "x",
+    special: false
   },
   {
     id: "divide",
-    symbol: "÷"
+    symbol: "÷",
+    special: false
   },
   {
     id: "equals",
-    symbol: "="
+    symbol: "=",
+    special: true
   }
 ];
