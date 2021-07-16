@@ -51,12 +51,6 @@ export const numbers = [
 
 export const operators = [
   {
-    id: "clear",
-    symbol: "AC",
-    special: true,
-    bg: "#d3787f"
-  },
-  {
     id: "add",
     symbol: "+",
     special: false,
@@ -79,11 +73,5 @@ export const operators = [
     symbol: "÷",
     special: false,
     bg: "#00a896"
-  },
-  {
-    id: "equals",
-    symbol: "=",
-    special: true,
-    bg: "#95d88c"
   }
 ];
