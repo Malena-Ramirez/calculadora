@@ -26,6 +26,7 @@ export const DisplayContainer = styled.div`
   background-color: beige;
   background-color: #2f2b2b;
   color: white;
+  height: 31px;
 `;
 
 export const DisplayText = styled.p`
@@ -80,8 +81,27 @@ export const OperatorKeysContainer = styled.div`
   grid-template-columns: repeat(2,1fr);
   gap: 5px;
   width: 33%;
+  font-weight:600;
+  font-size: 1.5rem;
   @media (min-width: 768px) {
     gap: 10px;
+  }
+`;
+
+export const SpecialKey = styled.div`
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid black;
+  border-radius:5px;
+  cursor: pointer;
+  grid-column: 1 / 3;
+  background-color: ${props=>props.id === "clear" ? "#d3787f" : "#95d88c" } ;
+  &:hover {
+    opacity:0.5;
+  }
+  &:active {
+    transform: translateY(2px);
   }
 `;
 
@@ -92,8 +112,6 @@ export const OperatorKeyContainer = styled.div`
   border:1px solid black;
   border-radius:5px;
   background-color: #c9c3c3;
-  font-weight:600;
-  font-size: 1.5rem;
   cursor: pointer;
   grid-column:${props=>props.special? "1 / 3": "auto"};
   background-color:${props=>props.bg};
@@ -104,4 +122,5 @@ export const OperatorKeyContainer = styled.div`
     transform: translateY(2px);
   }
 `;
+
 
