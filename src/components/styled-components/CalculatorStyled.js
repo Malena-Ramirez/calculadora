@@ -65,6 +65,9 @@ export const NumberKeyContainer = styled.div`
   &:hover {
     background-color: #8b8a8a;
   }
+  &:active {
+    transform: translateY(2px);
+  }
 `;
 
 export const Number = styled.span`
@@ -96,6 +99,9 @@ export const OperatorKeyContainer = styled.div`
   background-color:${props=>props.bg};
   &:hover {
     opacity:0.5;
+  }
+  &:active {
+    transform: translateY(2px);
   }
 `;
 
