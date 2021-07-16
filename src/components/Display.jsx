@@ -1,10 +1,10 @@
 import React from 'react'
 import { DisplayContainer, DisplayText } from './styled-components/CalculatorStyled'
 
-const Display = () => {
+const Display = ( {textDisplay} ) => {
   return (
     <DisplayContainer>
-      <DisplayText id='display'>23678+8-5</DisplayText>
+      <DisplayText id='display'>{textDisplay}</DisplayText>
     </DisplayContainer>
   )
 }
