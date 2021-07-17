@@ -10,37 +10,22 @@ const Calculator = () => {
   
   const handleClick = e =>{
     const { innerText } = e.target;
-    // if (!isNaN(innerText)) {
-    //   innerText = parseInt(innerText);
-    // } 
-    
-    let textToDisplay;
-    if (showDisplay) {
-      if (showDisplay === '0') {
-        if (innerText==='00' || innerText==='0') {
-          textToDisplay = '0';
-        } else{
-          if (innerText==='.') {
-            textToDisplay = showDisplay + innerText;
-          } else {
-            textToDisplay = innerText;
-          }
-        }
-      } else {
-        textToDisplay = showDisplay + innerText;
-      }
+    let textToDisplay= showDisplay + innerText;
+    textToDisplay = Number(textToDisplay);
+    if (isNaN(textToDisplay)) {
+      textToDisplay = showDisplay ? showDisplay : "0.";
     } else {
-      if (innerText==='00'){
-        textToDisplay = '';
+      if (Number(showDisplay) % 1) {
+        textToDisplay = showDisplay + innerText;
       } else {
-        if (innerText==='.') {
-          textToDisplay = '0.'
-        } else {
-          textToDisplay = showDisplay + innerText;
-        }
+        textToDisplay = (innerText === ".") ? (showDisplay + innerText) : textToDisplay.toString();
       }
     }
     setShowDisplay(textToDisplay);
+  }
+  
+  const handleReset = () =>{
+    setShowDisplay('');
   }
 
   return (
@@ -61,7 +46,7 @@ const Calculator = () => {
           </NumberKeysContainer>
 
           <OperatorKeysContainer>
-            <SpecialKey id="clear">
+            <SpecialKey id="clear" onClick={handleReset}>
               <span>AC</span>
             </SpecialKey>
           {
