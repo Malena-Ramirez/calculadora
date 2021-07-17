@@ -11,6 +11,7 @@ export const CalculatorContainer = styled.div`
 export const CalculatorMain = styled.div`
   padding: 10px;
   background-color: #313b3a;
+  border-radius: 5px;
   width: 50vw;
   min-width: 280px;
   max-width: 515px;
@@ -23,10 +24,10 @@ export const Tittle = styled.h1`
 
 export const DisplayContainer = styled.div`
   padding: 5px 10px;
-  background-color: beige;
   background-color: #2f2b2b;
   color: white;
   height: 31px;
+  border-radius: 5px;
 `;
 
 export const DisplayText = styled.p`
@@ -113,8 +114,7 @@ export const OperatorKeyContainer = styled.div`
   border-radius:5px;
   background-color: #c9c3c3;
   cursor: pointer;
-  grid-column:${props=>props.special? "1 / 3": "auto"};
-  background-color:${props=>props.bg};
+  background-color:#00a896;
   &:hover {
     opacity:0.5;
   }
