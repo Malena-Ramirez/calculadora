@@ -7,6 +7,8 @@ import { numbers, operators } from '../data';
 
 const Calculator = () => {
   const [showDisplay, setShowDisplay] = useState('');
+  const [ altText, setAltText] = useState('');
+  const [operation, setOperation] = useState([]);
   
   const handleClick = e =>{
     const { innerText } = e.target;
@@ -22,17 +24,46 @@ const Calculator = () => {
       }
     }
     setShowDisplay(textToDisplay);
+    setAltText('');
   }
   
   const handleReset = () =>{
     setShowDisplay('');
+    setAltText('');
+    setOperation([]);
   }
+
+  const handleOperation = (e) =>{
+    const { innerText } = e.target;
+
+    if (!showDisplay && innerText === "-") {
+      setShowDisplay(innerText);
+    }
+
+    let operationArray = operation;
+
+    if (showDisplay) {
+      operationArray = [...operation, showDisplay, innerText];
+      setAltText(showDisplay);
+      setShowDisplay('');    
+    } else {
+      if (altText && innerText !== "-") {
+        operationArray = [...operation.slice(0,-1), innerText]
+      }
+    }
+    
+    setOperation(operationArray);
+  }
+
 
   return (
     <CalculatorContainer>
       <CalculatorMain>
         <Tittle>Calculadora</Tittle>
-        <Display textDisplay={showDisplay} />
+        <Display 
+          textDisplay={showDisplay} 
+          altText={altText} 
+        />
 
         <KeyContainer>
           <NumberKeysContainer>
@@ -53,9 +84,8 @@ const Calculator = () => {
             operators.map(operator =>(
               <OperatorKeys 
                 id={operator.id} 
-                symbol={operator.symbol} 
-                special={operator.special}
-                bg={operator.bg} 
+                symbol={operator.symbol}
+                onClick={handleOperation} 
                 key={operator.id} />
             ))
           }
