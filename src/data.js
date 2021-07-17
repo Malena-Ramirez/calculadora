@@ -1,39 +1,39 @@
 export const numbers = [
   {
-    id: "nine",
-    number: "9"
+    id: "seven",
+    number: "7"
   },
   {
     id: "eight",
     number: "8"
   },
   {
-    id: "seven",
-    number: "7"
-  },
-  {
-    id: "six",
-    number: "6"
-  },
-  {
-    id: "five",
-    number: "5"
+    id: "nine",
+    number: "9"
   },
   {
     id: "four",
     number: "4"
   },
   {
-    id: "three",
-    number: "3"
+    id: "five",
+    number: "5"
+  },
+  {
+    id: "six",
+    number: "6"
+  },
+  {
+    id: "one",
+    number: "1"
   },
   {
     id: "two",
     number: "2"
   },
   {
-    id: "one",
-    number: "1"
+    id: "three",
+    number: "3"
   },
   {
     id: "zero",
@@ -64,6 +64,6 @@ export const operators = [
   },
   {
     id: "divide",
-    symbol: "÷",
+    symbol: "/",
   }
 ];

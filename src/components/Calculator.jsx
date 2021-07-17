@@ -4,6 +4,7 @@ import NumberKeys from './NumberKeys';
 import OperatorKeys from './OperatorKeys';
 import { CalculatorContainer, Tittle, CalculatorMain, KeyContainer, NumberKeysContainer, OperatorKeysContainer, SpecialKey } from './styled-components/CalculatorStyled';
 import { numbers, operators } from '../data';
+import { create, all } from 'mathjs'
 
 const Calculator = () => {
   const [showDisplay, setShowDisplay] = useState('');
@@ -28,7 +29,7 @@ const Calculator = () => {
   }
   
   const handleReset = () =>{
-    setShowDisplay('');
+    setShowDisplay(0);
     setAltText('');
     setOperation([]);
   }
@@ -42,6 +43,11 @@ const Calculator = () => {
 
     let operationArray = operation;
 
+    if (!showDisplay && altText && operation.length === 0 ) {
+      setOperation(altText + innerText)
+    }
+
+
     if (showDisplay) {
       operationArray = [...operation, showDisplay, innerText];
       setAltText(showDisplay);
@@ -51,11 +57,19 @@ const Calculator = () => {
         operationArray = [...operation.slice(0,-1), innerText]
       }
     }
-    
     setOperation(operationArray);
   }
 
-
+  const handleResult = () =>{
+    if (altText || operation.length !== 0) {
+      let operationExpression = altText? [...operation.slice(0,-1)] : [...operation, showDisplay];
+      operationExpression = operationExpression.map((element)=>element==="x"?"*":element).join("");
+      const math = create(all);
+      setAltText(math.evaluate(operationExpression));
+      setShowDisplay('');
+      setOperation([]);
+    }
+}
   return (
     <CalculatorContainer>
       <CalculatorMain>
@@ -90,7 +104,7 @@ const Calculator = () => {
             ))
           }
 
-              <SpecialKey id="equals">
+              <SpecialKey id="equals" onClick={handleResult}>
                 <span>=</span>
               </SpecialKey>
 
