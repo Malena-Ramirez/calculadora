@@ -53,25 +53,17 @@ export const operators = [
   {
     id: "add",
     symbol: "+",
-    special: false,
-    bg: "#00a896"
   },
   {
     id: "subtract",
     symbol: "-",
-    special: false,
-    bg: "#00a896"
   },
   {
     id: "multiply",
     symbol: "x",
-    special: false,
-    bg: "#00a896"
   },
   {
     id: "divide",
     symbol: "÷",
-    special: false,
-    bg: "#00a896"
   }
 ];
