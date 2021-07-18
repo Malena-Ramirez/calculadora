@@ -4,7 +4,7 @@ import { DisplayContainer, DisplayText } from './styled-components/CalculatorSty
 const Display = ( {textDisplay, altText} ) => {
   return (
     <DisplayContainer>
-      <DisplayText id='display'>{textDisplay?textDisplay:altText}</DisplayText>
+      <DisplayText id='display'>{(textDisplay?textDisplay:altText)||0}</DisplayText>
     </DisplayContainer>
   )
 }
