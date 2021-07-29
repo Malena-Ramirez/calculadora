@@ -9,7 +9,7 @@ import {
   KeyContainer,
   NumberKeysContainer,
   OperatorKeysContainer,
-  SpecialKey
+  SpecialKey,
 } from './styled-components/CalculatorStyled';
 import { numbers, operators } from '../data';
 import { create, all } from 'mathjs';
@@ -19,11 +19,14 @@ const Calculator = () => {
   const [altText, setAltText] = useState('');
   const [operation, setOperation] = useState([]);
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     if (showDisplay.length < 15) {
       const { innerText } = e.target;
-      let textToDisplay = showDisplay + innerText;
-      textToDisplay = Number(textToDisplay);
+
+      let textToDisplay = showDisplay + innerText; //1.0
+
+      textToDisplay = Number(textToDisplay); //1
+
       if (isNaN(textToDisplay)) {
         textToDisplay = showDisplay || '0.';
       } else {
@@ -31,11 +34,12 @@ const Calculator = () => {
           textToDisplay = showDisplay + innerText;
         } else {
           textToDisplay =
-            innerText === '.'
+            innerText === '.' || (innerText === '0' && showDisplay !== '0')
               ? showDisplay + innerText
               : textToDisplay.toString();
         }
       }
+
       setShowDisplay(textToDisplay);
       setAltText('');
     }
@@ -47,7 +51,7 @@ const Calculator = () => {
     setOperation([]);
   };
 
-  const handleOperation = e => {
+  const handleOperation = (e) => {
     const { innerText } = e.target;
 
     let operationArray = operation;
@@ -79,12 +83,30 @@ const Calculator = () => {
       let operationExpression = altText
         ? [...operation.slice(0, -1)]
         : [...operation, showDisplay];
+
       if (operationExpression.length > 0) {
+        const checkingItem = (array) => {
+          let flag = true;
+          let newArray = [];
+          array.forEach((element) => {
+            if (flag !== isNaN(element)) {
+              flag = !flag;
+              newArray = [...newArray, element];
+            } else {
+              newArray = [...newArray.slice(0, -1), element];
+            }
+          });
+          return newArray;
+        };
+
+        operationExpression = checkingItem(operationExpression);
+
         operationExpression = operationExpression
-          .map(element => (element === 'x' ? '*' : element))
+          .map((element) => (element === 'x' ? '*' : element))
           .join('');
+
         const math = create(all);
-        setAltText(math.evaluate(operationExpression).toFixed(2));
+        setAltText(math.evaluate(operationExpression));
       }
       setShowDisplay('');
       setOperation([]);
@@ -98,7 +120,7 @@ const Calculator = () => {
 
         <KeyContainer>
           <NumberKeysContainer>
-            {numbers.map(number => (
+            {numbers.map((number) => (
               <NumberKeys
                 id={number.id}
                 number={number.number}
@@ -109,11 +131,11 @@ const Calculator = () => {
           </NumberKeysContainer>
 
           <OperatorKeysContainer>
-            <SpecialKey id="clear" onClick={handleReset}>
+            <SpecialKey id='clear' onClick={handleReset}>
               <span>AC</span>
             </SpecialKey>
 
-            {operators.map(operator => (
+            {operators.map((operator) => (
               <OperatorKeys
                 id={operator.id}
                 symbol={operator.symbol}
@@ -122,7 +144,7 @@ const Calculator = () => {
               />
             ))}
 
-            <SpecialKey id="equals" onClick={handleResult}>
+            <SpecialKey id='equals' onClick={handleResult}>
               <span>=</span>
             </SpecialKey>
           </OperatorKeysContainer>
