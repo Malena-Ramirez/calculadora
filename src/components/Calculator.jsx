@@ -14,7 +14,7 @@ import {
 import { numbers, operators } from '../data';
 import { create, all } from 'mathjs';
 
-const Calculator = () => {
+const Calculator = ({ numbersList = numbers }) => {
   const [showDisplay, setShowDisplay] = useState('');
   const [altText, setAltText] = useState('');
   const [operation, setOperation] = useState([]);
@@ -120,7 +120,7 @@ const Calculator = () => {
 
         <KeyContainer>
           <NumberKeysContainer>
-            {numbers.map((number) => (
+            {numbersList.map((number) => (
               <NumberKeys
                 id={number.id}
                 number={number.number}
